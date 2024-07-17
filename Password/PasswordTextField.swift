@@ -9,13 +9,13 @@ import Foundation
 import UIKit
 
 class PasswordTextField: UIView {
-    
     let lockImageView = UIImageView(image: UIImage(systemName: "lock.fill"))
     let textField = UITextField()
-    let placeHolderText : String
+    let placeHolderText: String
     
     let eyeButton = UIButton(type: .custom)
-    
+    let dividerView = UIView()
+
     init(placeHolderText: String) {
         self.placeHolderText = placeHolderText
         
@@ -25,18 +25,17 @@ class PasswordTextField: UIView {
         layout()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 200, height: 200)
+        return CGSize(width: 200, height: 50)
     }
 }
 
-
 extension PasswordTextField {
-    
     func style() {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = .systemOrange
@@ -45,24 +44,25 @@ extension PasswordTextField {
         
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.placeholder = placeHolderText
-        textField.isSecureTextEntry = false //true
-       // textField.delegate = self
+        textField.isSecureTextEntry = false // true
+        // textField.delegate = self
         textField.keyboardType = .asciiCapable
-        textField.attributedPlaceholder = NSAttributedString(string: placeHolderText, attributes: [NSAttributedString.Key .foregroundColor: UIColor.secondaryLabel])
+        textField.attributedPlaceholder = NSAttributedString(string: placeHolderText, attributes: [NSAttributedString.Key.foregroundColor: UIColor.secondaryLabel])
         
         eyeButton.translatesAutoresizingMaskIntoConstraints = false
         eyeButton.setImage(UIImage(systemName: "eye.circle"), for: .normal)
         eyeButton.setImage(UIImage(systemName: "eye.slash.circle"), for: .selected)
         eyeButton.addTarget(self, action: #selector(togglePasswordView), for: .touchUpInside)
-       
+        
+        dividerView.translatesAutoresizingMaskIntoConstraints = false
+        dividerView.backgroundColor = .separator
     }
     
-    
     func layout() {
-        
         addSubview(lockImageView)
         addSubview(textField)
         addSubview(eyeButton)
+        addSubview(dividerView)
         
         // lockImage
         NSLayoutConstraint.activate([
@@ -70,10 +70,10 @@ extension PasswordTextField {
             lockImageView.leadingAnchor.constraint(equalTo: leadingAnchor)
         ])
         
-        //textField
+        // textField
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: topAnchor),
-            textField.leadingAnchor.constraint(equalToSystemSpacingAfter: lockImageView.trailingAnchor, multiplier: 1),
+            textField.leadingAnchor.constraint(equalToSystemSpacingAfter: lockImageView.trailingAnchor, multiplier: 1)
         ])
         
         // eyeButton
@@ -84,16 +84,29 @@ extension PasswordTextField {
             eyeButton.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
         
+        // dividerView
+        NSLayoutConstraint.activate([
+            dividerView.heightAnchor.constraint(equalToConstant: 1),
+            dividerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            dividerView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            dividerView.topAnchor.constraint(equalToSystemSpacingBelow: textField.bottomAnchor, multiplier: 1)
+            
+        ])
+        
+        // CHCR
+        lockImageView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
+        textField.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
+        eyeButton.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
+        
+     
     }
 }
 
 // MARK: - Actions
+
 extension PasswordTextField {
     @objc func togglePasswordView(_ sender: Any) {
         textField.isSecureTextEntry.toggle()
         eyeButton.isSelected.toggle()
     }
 }
-
-
-
