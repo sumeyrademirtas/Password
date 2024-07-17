@@ -12,6 +12,7 @@
 		81A648F82C47D43000720DF1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A648F72C47D43000720DF1 /* ViewController.swift */; };
 		81A648FD2C47D43100720DF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81A648FC2C47D43100720DF1 /* Assets.xcassets */; };
 		81A649002C47D43100720DF1 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 81A648FF2C47D43100720DF1 /* Base */; };
+		81A6490B2C47E7B400720DF1 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A6490A2C47E7B400720DF1 /* PasswordTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		81A648FC2C47D43100720DF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81A648FF2C47D43100720DF1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		81A649012C47D43100720DF1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		81A6490A2C47E7B400720DF1 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,10 +56,12 @@
 		81A648F22C47D43000720DF1 /* Password */ = {
 			isa = PBXGroup;
 			children = (
+				81A6490E2C47E87200720DF1 /* Utils */,
 				81A649072C47D50C00720DF1 /* Files */,
 				81A648F32C47D43000720DF1 /* AppDelegate.swift */,
 				81A648F52C47D43000720DF1 /* SceneDelegate.swift */,
 				81A648F72C47D43000720DF1 /* ViewController.swift */,
+				81A6490A2C47E7B400720DF1 /* PasswordTextField.swift */,
 			);
 			path = Password;
 			sourceTree = "<group>";
@@ -70,6 +74,13 @@
 				81A649012C47D43100720DF1 /* Info.plist */,
 			);
 			name = Files;
+			sourceTree = "<group>";
+		};
+		81A6490E2C47E87200720DF1 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81A6490B2C47E7B400720DF1 /* PasswordTextField.swift in Sources */,
 				81A648F82C47D43000720DF1 /* ViewController.swift in Sources */,
 				81A648F42C47D43000720DF1 /* AppDelegate.swift in Sources */,
 				81A648F62C47D43000720DF1 /* SceneDelegate.swift in Sources */,
