@@ -15,6 +15,8 @@ class PasswordTextField: UIView {
     
     let eyeButton = UIButton(type: .custom)
     let dividerView = UIView()
+    
+    let errorLabel = UILabel()
 
     init(placeHolderText: String) {
         self.placeHolderText = placeHolderText
@@ -31,14 +33,14 @@ class PasswordTextField: UIView {
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 200, height: 50)
+        return CGSize(width: 200, height: 60)
     }
 }
 
 extension PasswordTextField {
     func style() {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .systemOrange
+//        backgroundColor = .systemOrange
         
         lockImageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -56,6 +58,15 @@ extension PasswordTextField {
         
         dividerView.translatesAutoresizingMaskIntoConstraints = false
         dividerView.backgroundColor = .separator
+        
+        errorLabel.translatesAutoresizingMaskIntoConstraints = false
+        errorLabel.font = UIFont.preferredFont(forTextStyle: .footnote)
+        errorLabel.textColor = .systemRed
+        errorLabel.text = "Your password must meet the requirements below."
+        errorLabel.numberOfLines = 0
+        errorLabel.lineBreakMode = .byWordWrapping
+        errorLabel.isHidden = false
+        
     }
     
     func layout() {
@@ -63,6 +74,7 @@ extension PasswordTextField {
         addSubview(textField)
         addSubview(eyeButton)
         addSubview(dividerView)
+        addSubview(errorLabel)
         
         // lockImage
         NSLayoutConstraint.activate([
@@ -93,10 +105,20 @@ extension PasswordTextField {
             
         ])
         
+        //errorLabel
+        NSLayoutConstraint.activate([
+            errorLabel.topAnchor.constraint(equalToSystemSpacingBelow: dividerView.bottomAnchor, multiplier: 0.5),
+            errorLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            errorLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+        
         // CHCR
         lockImageView.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
         textField.setContentHuggingPriority(UILayoutPriority.defaultLow, for: .horizontal)
         eyeButton.setContentHuggingPriority(UILayoutPriority.defaultHigh, for: .horizontal)
+        
+        
+        
         
      
     }
