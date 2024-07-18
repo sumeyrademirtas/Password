@@ -40,12 +40,11 @@ class PasswordStatusView: UIView {
 extension PasswordStatusView {
     func style() {
         translatesAutoresizingMaskIntoConstraints = false
-        backgroundColor = .systemOrange
+        backgroundColor = .tertiarySystemFill
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 8
-        stackView.backgroundColor = .systemRed
         stackView.distribution = .equalCentering
         
         criteriaLabel.translatesAutoresizingMaskIntoConstraints = false
