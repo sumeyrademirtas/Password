@@ -33,12 +33,12 @@ class PasswordCriteriaView: UIView {
         imageView.image = circleImage
     }
     
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//        
-//        style()
-//        layout()
-//    }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        style()
+        layout()
+    }
     
     init(text: String) {
         super.init(frame: .zero)
