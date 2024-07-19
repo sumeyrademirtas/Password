@@ -8,6 +8,7 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
     let stackView = UIStackView()
     let newPasswordTextField = PasswordTextField(placeHolderText: "New password")
 //    let criteriaView = PasswordCriteriaView(text: "uppercase letter (A-Z)")
@@ -30,6 +31,7 @@ extension ViewController {
         stackView.spacing = 20
         
         newPasswordTextField.translatesAutoresizingMaskIntoConstraints = false
+        newPasswordTextField.delegate = self
         
         statusView.translatesAutoresizingMaskIntoConstraints = false
         statusView.layer.cornerRadius = 5
@@ -57,5 +59,15 @@ extension ViewController {
             
         ])
         
+    }
+}
+
+
+// MARK: PasswordTextFieldDelegate
+extension ViewController: PasswordTextFieldDelegate {
+    func editingChanged(_ sender: PasswordTextField) {
+        if sender == newPasswordTextField {
+            statusView.updateDisplay(sender.textField.text ?? "")
+        }
     }
 }
